@@ -3,7 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import prisma from "./config/prisma.js";
 import authRoutes from "./modules/auth/auth.routes.js";
-import "dotenv/config"; // This must be the first or second line
+import "dotenv/config";
 
 const app = express();
 app.use(cors());
