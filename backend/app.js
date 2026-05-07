@@ -6,21 +6,20 @@ import authRoutes from "./modules/auth/auth.routes.js";
 import "dotenv/config";
 
 const app = express();
+const communityRoutes = require("./routes/communityRoutes");
+
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-
 app.use("/auth", authRoutes);
-
-
+app.use("/api/community", CommunityRoutes);
 
 app.get("/", (req, res) => {
   res.json({
     message: "API Running Successfully",
   });
 });
-
 
 // Now your test route will work
 app.get("/test-db", async (req, res) => {
