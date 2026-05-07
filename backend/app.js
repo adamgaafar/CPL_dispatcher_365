@@ -2,19 +2,18 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import prisma from "./config/prisma.js";
-
+import authRoutes from "./modules/auth/auth.routes.js";
+import "dotenv/config"; // This must be the first or second line
 
 const app = express();
-
-app.get("/test-db", async (req, res) => {
-  const users = await prisma.user.findMany();
-
-  res.json(users);
-});
-
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+
+
+app.use("/auth", authRoutes);
+
+
 
 app.get("/", (req, res) => {
   res.json({
